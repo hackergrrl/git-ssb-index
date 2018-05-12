@@ -1,5 +1,5 @@
 var flumeView = require('flumeview-level')
-var lex = require('lex62')
+var charwise = require('charwise')
 
 module.exports = {
   name: 'git',
@@ -17,7 +17,7 @@ module.exports = {
         var c = msg.value.content
         var isGitMsg = c.type in msgTypes || (c.type == 'post' && c.repo && c.issue)
         if (isGitMsg) {
-          return [msg.value.timestamp, msg.value.author + lex.encode(msg.value.sequence)]
+          return [msg.value.timestamp, msg.value.author + charwise.encode(msg.value.sequence)]
         } else {
           return []
         }
@@ -29,19 +29,12 @@ module.exports = {
       author: function (opts) {
         opts.gt = opts.gt || 0
         opts.lt = opts.lt || 0
-        opts.gt = opts.id + numberToLex(opts.gt)
-        opts.lt = opts.id + numberToLex(opts.lt) + '~'
+        opts.gt = opts.id + charwise.encode(opts.gt)
+        opts.lt = opts.id + charwise.encode(opts.lt) + '~'
         return view.read(opts)
       }
     }
   }
-}
-
-function numberToLex (n) {
-  n = Number(n)
-  if (n < 0) return n = 0
-  if (n === Infinity) return Number.MAX_SAFE_INTEGER
-  return lex.encode(n)
 }
 
 var msgTypes = {

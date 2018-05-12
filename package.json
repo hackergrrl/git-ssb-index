@@ -6,8 +6,8 @@
   "main": "index.js",
   "keywords": [],
   "dependencies": {
-    "flumeview-level": "^3.0.4",
-    "lex62": "^1.0.2"
+    "charwise": "^3.0.1",
+    "flumeview-level": "^3.0.4"
   },
   "license": "ISC"
 }
