@@ -29,11 +29,8 @@ module.exports = {
       author: function (opts) {
         opts.gt = opts.gt || 0
         opts.lt = opts.lt || 0
-        if (opts.gt === -Infinity) opts.gt = '!'
-        if (opts.lt === Infinity) opts.lt = '~'
         opts.gt = opts.id + numberToLex(opts.gt)
         opts.lt = opts.id + numberToLex(opts.lt) + '~'
-        console.log('query opts', opts)
         return view.read(opts)
       }
     }
@@ -41,6 +38,7 @@ module.exports = {
 }
 
 function numberToLex (n) {
+  n = Number(n)
   if (n < 0) return n = 0
   if (n === Infinity) return Number.MAX_SAFE_INTEGER
   return lex.encode(n)
