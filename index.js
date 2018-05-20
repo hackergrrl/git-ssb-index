@@ -2,14 +2,14 @@ var flumeView = require('flumeview-level')
 var charwise = require('charwise')
 
 module.exports = {
-  name: 'git',
-  version = require('./package.json').version,
+  name: 'gitindex',
+  version: require('./package.json').version,
   manifest: {
     read: 'source',
     author: 'source'
   },
   init: function (sbot, config) {
-    const view = sbot._flumeUse('git-ssb', flumeView(
+    const view = sbot._flumeUse('gitindex', flumeView(
       1.0,
       function map (msg, seq) {
         var c = msg.value.content

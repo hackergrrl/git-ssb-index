@@ -1,4 +1,4 @@
-# git-ssb-index
+# ssb-gitindex
 
 > git indexes for [secure-scuttlebutt](http://scuttlebutt.nz)
 
@@ -10,7 +10,7 @@ messages, both in general and by a specific author.
 With scuttlebot or Patchwork running:
 
 ```
-$ sbot plugins.install git-ssb-index
+$ sbot plugins.install ssb-gitindex
 ```
 
 Then restart scuttlebot / Patchwork.
