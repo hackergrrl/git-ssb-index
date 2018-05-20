@@ -3,14 +3,12 @@ var charwise = require('charwise')
 
 module.exports = {
   name: 'git',
-  version: '1.0.0',
+  version = require('./package.json').version,
   manifest: {
     read: 'source',
     author: 'source'
   },
   init: function (sbot, config) {
-    console.log('*** loading git index***')
-
     const view = sbot._flumeUse('git-ssb', flumeView(
       1.0,
       function map (msg, seq) {
